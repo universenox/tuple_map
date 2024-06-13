@@ -33,8 +33,8 @@ A typical block size is 64B. But suppose we only care about the first two
 felds, the first 8B. When we access the first two values, assuming Tuple is
 64B aligned, we will pull in 56B of garbage into our cache.
 
-With tuple_map, however, each field gets its own vector. Accessing a 
-single integer will hence pull in 7 others of its kind.
+With tuple_map, however, each field gets its own vector. Accessing the first
+int32_t will hence pull in 15 others of its kind.
 
 I performed a benchmark where I randomly generated N values, 
 and access the two integers for N random keys.
